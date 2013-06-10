@@ -44,25 +44,20 @@ public class GWT_Demo implements EntryPoint {
 		nameField.setText("Hello User Write Your name here");
 		final Label errorLabel = new Label();
 
-		// We can add style names to widgets
 		sendButton.addStyleName("sendButton");
 
-		// Add the nameField and sendButton to the RootPanel
-		// Use RootPanel.get() to get the entire body element
 		RootPanel.get("nameFieldContainer").add(nameField);
 		RootPanel.get("sendButtonContainer").add(sendButton);
 		RootPanel.get("errorLabelContainer").add(errorLabel);
 
-		// Focus the cursor on the name field when the app loads
 		nameField.setFocus(true);
 		nameField.selectAll();
 
-		// Create the popup dialog box
 		final DialogBox dialogBox = new DialogBox();
 		dialogBox.setText("Remote Procedure Call");
 		dialogBox.setAnimationEnabled(true);
 		final Button closeButton = new Button("Close");
-		// We can set the id of a widget by accessing its Element
+		
 		closeButton.getElement().setId("closeButton");
 		final Label textToServerLabel = new Label();
 		final HTML serverResponseLabel = new HTML();
@@ -76,7 +71,6 @@ public class GWT_Demo implements EntryPoint {
 		dialogVPanel.add(closeButton);
 		dialogBox.setWidget(dialogVPanel);
 
-		// Add a handler to close the DialogBox
 		closeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				dialogBox.hide();
@@ -85,29 +79,23 @@ public class GWT_Demo implements EntryPoint {
 			}
 		});
 
-		// Create a handler for the sendButton and nameField
+		
 		class MyHandler implements ClickHandler, KeyUpHandler {
-			/**
-			 * Fired when the user clicks on the sendButton.
-			 */
+			
 			public void onClick(ClickEvent event) {
 				sendNameToServer();
 			}
 
-			/**
-			 * Fired when the user types in the nameField.
-			 */
+			
 			public void onKeyUp(KeyUpEvent event) {
 				if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 					sendNameToServer();
 				}
 			}
 
-			/**
-			 * Send the name from the nameField to the server and wait for a response.
-			 */
+			
 			private void sendNameToServer() {
-				// First, we validate the input.
+				
 				errorLabel.setText("");
 				String textToServer = nameField.getText();
 				if (!FieldVerifier.isValidName(textToServer)) {
@@ -115,14 +103,13 @@ public class GWT_Demo implements EntryPoint {
 					return;
 				}
 
-				// Then, we send the input to the server.
 				sendButton.setEnabled(false);
 				textToServerLabel.setText(textToServer);
 				serverResponseLabel.setText("");
 				greetingService.greetServer(textToServer,
 						new AsyncCallback<String>() {
 							public void onFailure(Throwable caught) {
-								// Show the RPC error message to the user
+								
 								dialogBox
 										.setText("Remote Procedure Call - Failure");
 								serverResponseLabel
@@ -144,7 +131,6 @@ public class GWT_Demo implements EntryPoint {
 			}
 		}
 
-		// Add a handler to send the name to the server
 		MyHandler handler = new MyHandler();
 		sendButton.addClickHandler(handler);
 		nameField.addKeyUpHandler(handler);
