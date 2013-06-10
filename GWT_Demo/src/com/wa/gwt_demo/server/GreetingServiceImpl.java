@@ -17,7 +17,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 			// If the input is not valid, throw an IllegalArgumentException back to
 			// the client.
 			throw new IllegalArgumentException(
-					"Name must have mim of 4 characters long");
+					"Name must have mim of 4 characters long for example 12345678");
 		}
 
 		String serverInfo = getServletContext().getServerInfo();
@@ -27,8 +27,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		input = escapeHtml(input);
 		userAgent = escapeHtml(userAgent);
 
-		return "Hello, Dear" + input + "!<br><br>I am running " + serverInfo
-				+ ".<br><br>It looks like you are using:<br>" + userAgent;
+		return "Hello, Dear" + input + "!<br><br>I am running on" + serverInfo + ".<br>It looks like you are using:<br>" + userAgent;
 	}
 
 	/**
