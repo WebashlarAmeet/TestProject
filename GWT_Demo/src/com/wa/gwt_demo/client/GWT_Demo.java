@@ -39,9 +39,9 @@ public class GWT_Demo implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-		final Button sendButton = new Button("Send");
+		final Button sendButton = new Button("Send Name");
 		final TextBox nameField = new TextBox();
-		nameField.setText("Hello User Write Your name here");
+		nameField.setText("Hello User");
 		final Label errorLabel = new Label();
 
 		// We can add style names to widgets
@@ -68,9 +68,9 @@ public class GWT_Demo implements EntryPoint {
 		final HTML serverResponseLabel = new HTML();
 		VerticalPanel dialogVPanel = new VerticalPanel();
 		dialogVPanel.addStyleName("dialogVPanel");
-		dialogVPanel.add(new HTML("<b>Sending User name to the server:</b>"));
+		dialogVPanel.add(new HTML("<b>Sending data to the server:</b>"));
 		dialogVPanel.add(textToServerLabel);
-		dialogVPanel.add(new HTML("<br><b>And Server replies:</b>"));
+		dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
 		dialogVPanel.add(serverResponseLabel);
 		dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
 		dialogVPanel.add(closeButton);
