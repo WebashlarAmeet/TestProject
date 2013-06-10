@@ -27,8 +27,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		input = escapeHtml(input);
 		userAgent = escapeHtml(userAgent);
 
-		return "Hello, Dear" + input + "!<br><br>I am running " + serverInfo
-				+ ".<br><br>It looks like you are using:<br>" + userAgent;
+		return "Hello, Dear" + input + "!<br><br>I am running on" + serverInfo + ".<br>It looks like you are using:<br>" + userAgent;
 	}
 
 	/**
